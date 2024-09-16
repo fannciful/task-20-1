@@ -13,24 +13,21 @@ $(document).ready(function () {
         const todoText = $('<span>').addClass('todo-text').text(todo.text);
         const deleteBtn = $('<button>').addClass('btn btn-danger btn-sm').text('Видалити');
 
-        // Видалення завдання
         deleteBtn.on('click', function (e) {
             e.stopPropagation();
             todoItem.remove();
             removeTodoFromStorage(todo.text);
         });
 
-        // Показ модального вікна при натисканні на завдання
         todoItem.on('click', function () {
             $('#taskText').text(todo.text);
             $('#taskModal').modal('show');
         });
 
-        todoItem.append(todoText, deleteBtn); // Додаємо елементи всередині <li>
-        todoList.append(todoItem); // Додаємо <li> в <ul>
+        todoItem.append(todoText, deleteBtn); 
+        todoList.append(todoItem); 
     };
 
-    // Додавання завдання через форму
     todoForm.on('submit', function (e) {
         e.preventDefault();
         const todoText = inputField.val().trim();
@@ -40,24 +37,22 @@ $(document).ready(function () {
             text: todoText,
         };
 
-        addTodoToDOM(todo); // Додає завдання до DOM
-        saveTodoToStorage(todo); // Зберігає завдання в localStorage
-        inputField.val(''); // Очищення поля вводу
+        addTodoToDOM(todo); 
+        saveTodoToStorage(todo); 
+        inputField.val(''); 
     });
 
-    // Збереження завдань до localStorage
     const saveTodoToStorage = (todo) => {
         const todos = JSON.parse(localStorage.getItem('todos')) || [];
         todos.push(todo);
         localStorage.setItem('todos', JSON.stringify(todos));
     };
 
-    // Видалення завдання з localStorage
     const removeTodoFromStorage = (text) => {
         let todos = JSON.parse(localStorage.getItem('todos')) || [];
         todos = todos.filter(todo => todo.text !== text);
         localStorage.setItem('todos', JSON.stringify(todos));
     };
 
-    loadTodos(); // Завантаження збережених завдань
+    loadTodos(); 
 });

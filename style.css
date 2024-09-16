@@ -1,6 +1,5 @@
 ul {
     list-style-type: none;
-    /* Прибирає крапки (маркер) у списку */
     padding: 0;
 }
 
@@ -8,11 +7,11 @@ body {
     background-color: #f0f8ff; 
 }
 .btn-custom-blue {
-    background-color: #004085; /* Темніший синій */
+    background-color: #004085; 
     border-color: #004085;
     color: white;
 }
 .btn-custom-blue:hover {
-    background-color: #002752; /* Ще темніший синій */
+    background-color: #002752; 
     border-color: #002752;
 }
